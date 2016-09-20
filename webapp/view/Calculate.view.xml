@@ -1,0 +1,54 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:u="sap.ui.unified" xmlns:mc="sap.suite.ui.microchart" xmlns:bmi="bmi.controls" xmlns:l="sap.ui.layout"  xmlns:f="sap.ui.layout.form" controllerName="bmi.controller.Calculate" xmlns:html="http://www.w3.org/1999/xhtml">
+    <Page id="page1" title="BMI Calulator">
+        <content>
+            <Table>
+                <columns>
+                    <Column />
+                    <Column />
+                </columns>
+                <items>
+                    <ColumnListItem>
+                        <cells>
+                            <Label text="Height" />
+                            <StepInput id="idHeight" value="{/Height}" />
+                        </cells>
+                    </ColumnListItem>
+                    <ColumnListItem>
+                        <cells>
+                            <Label text="Weight" />
+                            <StepInput id="idWeight" value="{/Weight}" />
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+            <VBox>
+                <bmi:BMIChart id="idChart" bmi="{/BMI}" />
+                <FlexBox alignItems="Start" justifyContent="Center">
+                    <items>
+                        <Title id="idCategory" text="{/Category}" titleStyle="H1" />
+                    </items>
+                </FlexBox>
+                <FlexBox alignItems="Start" justifyContent="Center">
+                    <items>
+                        <core:HTML content="&lt;div class='my-legend'&gt;
+                        &lt;div class='legend-scale'&gt;
+                          &lt;ul class='legend-labels'&gt;
+                            &lt;li&gt;&lt;span style='background:#0092B9;'&gt;&lt;/span&gt;Below 18.4&lt;BR&gt; Underweight &lt;/li&gt;
+                            &lt;li&gt;&lt;span style='background:#86AD00;'&gt;&lt;/span&gt;18.5 - 24.9 &lt;BR&gt; Normal &lt;/li&gt;
+                            &lt;li&gt;&lt;span style='background:#F2B705;'&gt;&lt;/span&gt;25.0 - 29.9 &lt;BR&gt; Overweight &lt;/li&gt;
+                            &lt;li&gt;&lt;span style='background:#D72931;'&gt;&lt;/span&gt;Above 30 &lt;BR&gt; Obese &lt;/li&gt;
+                          &lt;/ul&gt;
+                        &lt;/div&gt;
+                        &lt;/div&gt;" />
+                    </items>
+                </FlexBox>
+            </VBox>
+        </content>
+        <footer>
+            <Toolbar>
+                <ToolbarSpacer />
+                <Button id="idCalculate" text="Calculate" press="calculateBMI" type="Accept" />
+            </Toolbar>
+        </footer>
+    </Page>
+</mvc:View>

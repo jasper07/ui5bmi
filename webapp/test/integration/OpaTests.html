@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Opa tests for BMI Calculator written in Gherkin</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <script id="sap-ui-bootstrap" 
+        src="https://openui5.hana.ondemand.com/resources/sap-ui-core.js" 
+        data-sap-ui-bindingSyntax="complex"
+        data-sap-ui-theme="sap_belize"
+        data-sap-ui-language="en" data-sap-ui-libs="sap.m" 
+        data-sap-ui-compatVersion="edge" 
+        data-sap-ui-resourceroots='{"bmi": "../../","test" : "./"}'>
+    </script>
+    <script>
+    jQuery.sap.require("test.requireQUnit");
+
+
+    sap.ui.require([
+        "sap/ui/test/gherkin/opa5TestHarness",
+        "test/Steps",
+        "sap/ui/test/Opa5",
+        "test/pages/Common"
+    ], function(testHarness, Steps, Opa5, Common) {
+        "use strict";
+        Opa5.extendConfig({
+            arrangements: new Common(),
+            viewNamespace: "bmi.view."
+        });
+
+        sap.ui.require(["test/requirePages"], function() {
+
+            testHarness.test({
+                featurePath: "test/CalculateBMI",
+                steps: Steps,
+                generateMissingSteps: true
+            });
+
+            QUnit.start();
+        });
+    });
+    </script>
+</head>
+
+<body>
+    <div id="qunit"></div>
+    <div id="qunit-fixture"></div>
+</body>
+
+</html>
